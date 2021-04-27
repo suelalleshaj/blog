@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+ <div style="text-align: center">
+            <a href="{% url 'post_new' %}">+ New Blog Post</a>
+        </div>
+<br>
+    {% for post in object_list %}
+        <div style="text-align:center">
+            <li><a href="post/{{ post.id }}/">{{ post.author }}: {{ post.title }}</a></li>
+            <p>{{ post.body }}</p>
+        </div>
+    <div class="card-footer">
+
+      <h4>Comments</h4>
+{% for comment in post.comments.all %}
+         <p>
+             <span><a href="comment/{{ comment.id }}/delete">{{ comment.author }} &middot;</a></span>
+         <span class="font-weight-bold"></span> {{ comment.body }}
+         </p>
+        {% endfor %}
+        <h5><a href="post/{{ post.id }}/comment/">Add Comment</a></h5>
+    </div>
+<br/>
+{% endfor %}
+{% endblock content %}

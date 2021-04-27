@@ -1,0 +1,35 @@
+ {% load static %}
+<html>
+    <head>
+        <title>Personal Blog</title>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"
+        rel="stylesheet">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    </head>
+<body >
+<style>
+body {
+  background-image: url('https://cdn.shopify.com/s/files/1/0958/9436/files/layflat-rose2-candlebox_1200x.png?v=1539832355');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:  100% 100%;
+}
+</style>
+    <div>
+    <header>
+        <div style="text-align:center">
+            <h1><a href="{% url 'home' %}">Personal Blog</a></h1>
+        </div>
+
+        </header>
+        {% if user.is_authenticated %}
+         <p><a href="{% url 'logout' %}">Log out</a></p>
+        <p style="text-align:center">Hi {{ user.username }}!</p>
+
+
+        {% endif %}
+        {% block content %}
+        {% endblock content %}
+        </div>
+    </body>
+</html>

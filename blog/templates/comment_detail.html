@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <h1>{{ comment.author }}</h1>
+        <p>{{ comment.body }}</p>
+    </div>
+    <a href="{% url 'comment_delete' comment.id %}">Delete comment</a>
+
+{% endblock content %}
